@@ -1,34 +1,32 @@
-name: Build Android APK
+  name: Build APK
 
-on:
-  push:
-    branches: [ main ]
+on: [push]
 
 jobs:
   build_droid:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
 
-      - name: Install Dependencies
-        run: |
-          sudo apt update
-          sudo apt install -y openjdk-17-jdk zip unzip
-          pip install buildozer==1.4.0
+    - name: Install Dependencies
+      run: |
+        sudo apt update
+        sudo apt install -y openjdk-17-jdk zip unzip
+        pip install buildozer==1.4.0
 
-      - name: Build APK
-        run: |
-          buildozer init || true
-          buildozer android debug
+    - name: Build APK
+      run: |
+        buildozer init || true
+        buildozer android debug
 
-      - name: Upload APK
-        uses: actions/upload-artifact@v3
-        with:
-          name: apk
-          path: bin/*.apk
+    - name: Upload APK
+      uses: actions/upload-artifact@v4
+      with:
+        name: app-apk
+        path: bin/*.apk
