@@ -19,7 +19,7 @@ jobs:
       run: |
         sudo apt update
         sudo apt install -y \
-          build-essential ccache libncurses5 libffi-dev libssl-dev \
+          build-essential ccache libncurses5-dev libffi-dev libssl-dev \
           libsqlite3-dev libjpeg-dev zlib1g-dev libfreetype6-dev \
           git unzip openjdk-17-jdk
 
