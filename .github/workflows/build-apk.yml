@@ -8,29 +8,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repo
-      uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - name: Setup Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.10'
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
 
-    - name: Install dependencies
-      run: |
-        sudo apt update
-        sudo apt install -y libffi-dev libssl-dev python3-dev python3-pip build-essential git zip unzip openjdk-11-jdk
-        pip install --upgrade pip
-        pip install cython
-        pip install buildozer
+      - name: Install dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y cython unzip zip openjdk-17-jdk
+          pip install --upgrade pip
+          pip install buildozer
+          echo "y" | yes | sdkmanager --licenses || true
+          sdkmanager "build-tools;36.0.0" || true
 
-    - name: Build APK
-      run: |
-        buildozer init || true
-        buildozer android debug
+      - name: Build APK
+        run: |
+          buildozer -v android debug
 
-    - name: Upload APK
-      uses: actions/upload-artifact@v4
-      with:
-        name: app-debug.apk
-        path: bin/*.apk
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: my-kivy-app
+          path: bin/*.apk
