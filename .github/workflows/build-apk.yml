@@ -18,11 +18,9 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt update
-          sudo apt install -y cython unzip zip openjdk-17-jdk
+          sudo apt install -y unzip zip openjdk-17-jdk
           pip install --upgrade pip
-          pip install buildozer
-          echo "y" | yes | sdkmanager --licenses || true
-          sdkmanager "build-tools;36.0.0" || true
+          pip install cython buildozer
 
       - name: Build APK
         run: |
