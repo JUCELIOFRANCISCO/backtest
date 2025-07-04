@@ -1,4 +1,3 @@
-
 [app]
 title = IQOptionBacktest
 package.name = iqoptionbacktest
