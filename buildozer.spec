@@ -1,5 +1,6 @@
+
 [app]
-title = IQ Option Backtest
+title = IQOptionBacktest
 package.name = iqoptionbacktest
 package.domain = org.iqoption
 source.dir = .
@@ -8,14 +9,11 @@ version = 1.0
 requirements = python3,kivy,requests
 orientation = portrait
 fullscreen = 1
+
 android.permissions = INTERNET
 android.api = 31
 android.minapi = 21
-android.ndk = 23b
 android.sdk = 24
+android.ndk = 23b
 android.archs = armeabi-v7a,arm64-v8a
 android.build_type = release
-
-[buildozer]
-log_level = 2
-warn_on_root = 1
