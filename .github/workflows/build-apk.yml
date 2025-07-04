@@ -28,10 +28,10 @@ jobs:
           libffi-dev libssl-dev libjpeg-dev libfreetype6-dev \
           libsqlite3-dev zlib1g-dev
 
-    - name: Install buildozer
+    - name: Install buildozer and Cython
       run: |
         pip install --upgrade pip
-        pip install buildozer
+        pip install cython buildozer
 
     - name: Build APK
       run: |
