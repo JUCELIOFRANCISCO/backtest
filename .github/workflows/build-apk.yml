@@ -28,6 +28,7 @@ jobs:
 
     - name: Install Android SDK Build Tools
       run: |
+        mkdir -p $ANDROID_HOME/cmdline-tools/latest
         yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager \
           "platform-tools" "platforms;android-33" "build-tools;33.0.2" --sdk_root=$ANDROID_HOME
 
